@@ -21,7 +21,13 @@ request({
     url: `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodedAddress}.json?access_token=${key}`,
     json: true
 }, (error, response, body) => {
-    console.log(`Address: ${body.features[0].place_name}`);
-    console.log(`Latitude: ${body.features[0].center[1]}`);
-    console.log(`Longitude: ${body.features[0].center[0]}`);
+    if (error) {
+        console.log('Unable to connect to server.');
+    } else if (body.features.length === 0) {
+        console.log('Unable to find the address.');
+    } else {
+        console.log(`Address: ${body.features[0].place_name}`);
+        console.log(`Latitude: ${body.features[0].center[1]}`);
+        console.log(`Longitude: ${body.features[0].center[0]}`);
+    }
 })
