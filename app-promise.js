@@ -15,9 +15,9 @@ const argv = yargs
     .argv;
 
 var encodedAddress = encodeURIComponent(argv.address);
-const key = 'pk.eyJ1IjoiY29kZXJhbmFudCIsImEiOiJja2NuZmg1YjMwYW9qMzNsdXpzdTk1ZHl2In0.MI7vlkkH2LF_pophEsz3jA';
+const key = '';
 var geocodeUrl = `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodedAddress}.json?access_token=${key}`;
-var weatherKey = 'd6353b2124ffab53d8222675f5c6d7ec';
+var weatherKey = 'd';
 
 axios.get(geocodeUrl).then((response) => {
     if (response.data.features.length === 0) {
